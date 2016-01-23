@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %} {{ super() }} {% endblock %}
+{% block head %} {{ super() }} {% endblock %}
+{% block navbar %} {{ super() }} {% endblock %}
+{% block content %}
+<div class="container">
+	<div class="col-md-4">
+		<a href="/scooters/vespa">
+		<img
+	  		class="img-responsive center-block"
+	 		alt="vespa scooters logo"
+			src="{{ url_for('static', filename="images/scooters/vespa/VespaLogo.png") }}">
+		</a>
+	</div>
+
+	<div class="col-md-4">
+		<a href="/scooters/genuine">
+		<img
+	  		class="img-responsive center-block"
+	 		alt="genuine scooters logo"
+			src="{{ url_for('static', filename="images/scooters/genuine/GenuineLogo.png") }}">
+		</a>
+	</div>
+
+	<div class="col-md-4">
+		<a href="/scooters/kymco">
+		<img
+	  		class="img-responsive center-block"
+	 		alt="kymco scooters logo"
+			src="{{ url_for('static', filename="images/scooters/kymco/KymcoLogo.png") }}">
+		</a>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block footer %} {{ super() }} {% endblock %}

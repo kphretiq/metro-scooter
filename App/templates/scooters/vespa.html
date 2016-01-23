@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %} {{ super() }} {% endblock %}
+{% block head %} {{ super() }} {% endblock %}
+{% block navbar %} {{ super() }} {% endblock %}
+{% block content %}
+<div class="container">
+	<img
+		class="img-responsive center-block"
+		alt="vespa scooters logo"
+		src="{{ url_for('static', filename="images/scooters/vespa/VespaLogo.png") }}">
+
+	<p class="lead">Vespa blurb. You know you want this.</p>
+
+	<div class="col-md-4">
+		<img
+	  		class="img-responsive center-block"
+	 		alt="vespa scooter superwhite"
+			src="{{ url_for('static', filename="images/scooters/vespa/superwhite.jpg") }}">
+	</div>
+
+	<div class="col-md-8">
+		<p class="lead">This is a bunch of really interesting text about this vespa scooter</p>
+		<p class="lead">This is a bunch of really interesting text about this vespa scooter</p>
+		<p class="lead">This is a bunch of really interesting text about this vespa scooter</p>
+		<p class="lead">This is a bunch of really interesting text about this vespa scooter</p>
+		<p class="lead">This is a bunch of really interesting text about this vespa scooter</p>
+	</div>
+
+</div>
+
+{% endblock %}
+
+{% block footer %} {{ super() }} {% endblock %}

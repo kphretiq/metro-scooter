@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}
+{{ super() }}
+Create Product Line
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<div class="container">
+	<h1>Product Line</h1>
+	{% if error is defined %}
+	<p>{{ error }}</p>	
+	{% endif %}
+
+	<form
+		id="product-line-form"
+		method="POST"
+		role="form"
+		data-toggle="validator">
+
+		<div class="form-group">
+			<label for="input-username" class="control-label">Name</label>
+			<input
+				type="text"
+				class="form-control"
+				id="input-name"
+				name="name"
+				{% if line is defined %}value="{{ line.name }}"{% endif %}
+				placeholder="Sundries"
+				required></input>
+		</div>
+
+		<div class="form-group">
+			<label for="textarea-blurb" class="control-label">blurb</label>
+			<textarea
+				class="form-control"
+				id="textarea-blurb"
+				name="blurb"
+				placeholder="Add some markdown describing this product line."
+				required>{% if line is defined %}{{ line.blurb }}{% endif %}</textarea>
+		</div>
+
+		<div class="form-group">
+			<label for="checkbox-disabled" class="control-label">
+				<input
+					type="checkbox"
+					id="checkbox-disabled"
+					name="disabled"
+					{% if line is defined and line.disabled == 1 %}checked{% endif %}></input>
+				Disable
+			</label>
+		</div>
+
+		{% if line is defined and line.image %}
+		<img src="{{ line.image.uri }}" alt="{{ line.image.alt }}">
+		{% endif %}
+
+		<div class="form-group">
+			<label for="submit-create" class="control-label"></label>
+			<button
+				type="submit"
+				class="btn btn-primary"
+				id="submit-create">Submit</button>
+		</div>
+	</form>
+{% if line is defined %}
+<a href="/line/images/{{ line.id }}">Manage Images for {{ line.name }}</a>
+{% endif %}
+</div>
+{% endblock %}

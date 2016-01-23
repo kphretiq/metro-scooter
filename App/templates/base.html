@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% block head %}
+
+		<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+		<!-- Latest compiled and minified bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+		<!-- font awesome -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+		<!-- bootstrap theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+		<!-- Latest compiled and minified bootstrap JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+		<!-- form validator for bootstrap -->
+		<script type="text/javascript" src="{{ url_for('static', filename='js/lib/bootstrap-validator/validator.min.js') }}"></script>
+
+		<script type="text/javascript" src="{{ url_for('static', filename='js/base.js') }}"></script>
+
+		<link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/dull-parts.css") }}"> 
+
+		<!-- fugly fonts fool-->
+		<link href='https://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+
+		<!-- bring the responsive noise -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>{% block title %}{{ config.SITE_NAME }} - {% endblock %}</title>
+		{% endblock %}
+	</head>
+	<body>
+	{% block navbar %}
+	<div class="container">
+		<nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+			<a class="navbar-brand" href="/">{{ config.SITE_NAME }}</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="/">home</a></li>
+			  {% for line in lines %}
+			  <li><a href="/line/{{ line.name }}">{{ line.name }}</a></li>
+			  {% endfor %}
+			  <li><a href="/metro/deals">deals</a></li>
+			  <li><a href="/metro/contact">contact</a></li>
+			  <li><a href="/metro/hours">hours</a></li>
+			  <li><a href="/metro/financing">financing</a></li>
+			  <li><a href="/comments">comments</a></li>
+			  <li><a href="/metro/pricing">pricing</a></li>
+			  <li><a href="/metro/faq">f.a.q.</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+	</div>
+	{% endblock %}
+
+	{% block content %}
+		{% block vote %}
+		{% endblock %}
+	{% endblock %}
+
+	{% block footer %}
+	<footer class="footer">
+		<div class="container">
+			<div class="col-md-12 text-center">
+				<p class="text-muted">&copy; {{ config.SITE_HOLDER }} <script>document.write(new Date().getFullYear())</script> all rights reserved.</p>
+			</div>
+		</div>
+	</footer>
+	{% endblock %}
+	</body>
+</html>

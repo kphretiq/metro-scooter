@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}
+{{ super() }}
+the original!
+{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block navbar %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ session.auth_user.username }}'s Exciting App Things!</h1>
+<h2>Now Get Busy!</h2>
+{% endblock %}
+{% block footer %}
+{{ super() }}
+{% endblock %}
+

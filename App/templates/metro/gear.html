@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %} {{ super() }} {% endblock %}
+{% block head %} {{ super() }} {% endblock %}
+{% block navbar %} {{ super() }} {% endblock %}
+{% block content %}
+<div class="container">
+	<div class="col-md-6 text-center">
+		<h3>Fulmer Helmets</h3>
+
+		<img
+			class="img-responsive center-block"
+			alt="af-755 helmet"
+			src="{{ url_for('static', filename='images/gear/af-755.png') }}">
+
+		<img
+			class="img-responsive center-block"
+			alt="af-e1 helmets"
+			src="{{ url_for('static', filename='images/gear/af-e1.png') }}">
+
+		<img
+			class="img-responsive center-block"
+			alt="af-u1 helmets"
+			src="{{ url_for('static', filename='images/gear/af-u1.png') }}">
+
+		<p class="lead">Fulmer Helmets starting at $120.00!</p>
+	</div>
+
+	<div class="col-md-6 text-center">
+		<h3>Olympia Gloves</h3>
+
+		<img
+			class="img-responsive center-block"
+			alt="olympia easyrider 103 gloves"
+			src="{{ url_for('static', filename='images/gear/olympia-easyrider-103.jpg') }}">
+
+		<p class="lead">Olympia Gloves starting at $54.00!</p>
+	</div>
+
+</div>
+
+{% endblock %}
+
+{% block footer %} {{ super() }} {% endblock %}

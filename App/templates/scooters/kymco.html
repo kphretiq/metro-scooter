@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %} {{ super() }} {% endblock %}
+{% block head %} {{ super() }} {% endblock %}
+{% block navbar %} {{ super() }} {% endblock %}
+{% block content %}
+<div class="container">
+	<img
+		class="img-responsive center-block"
+		alt="kymco scooters logo"
+		src="{{ url_for('static', filename="images/scooters/KymcoLogo.png") }}">
+	<p class="lead">Kymco blurb</p>
+</div>
+
+{% endblock %}
+
+{% block footer %} {{ super() }} {% endblock %}

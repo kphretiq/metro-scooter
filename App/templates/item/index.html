@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %} {{ super() }} {% endblock %}
+{% block head %} {{ super() }} {% endblock %}
+{% block navbar %} {{ super() }} {% endblock %}
+{% block content %}
+<div class="container">
+	<h1>{{ brand.name }} {{ item.name }}</h1>
+	<div class="lead">
+	{% filter markdown %}{{ item.blurb }}{% endfilter %}
+	</div>
+	{% if item %}{% for image in item.images %}
+	<div class="col-md-4">
+		<img
+	  		class="img-responsive center-block"
+	 		alt="{{ image.alt }}"
+			src="{{ image.uri }}">
+	</div>
+	{% endfor %}{% endif %}
+
+	{% for item in item.items %}
+	<div class="col-md-4">
+		<a href="/show/{{ item.name }}/{{ item.name }}">
+		{% if item.image_id %}
+		<img
+	  		class="img-responsive center-block"
+	 		alt="genuine scooters logo"
+			src="{{ item.image_id }}">
+		</a>
+		{% endif %}
+	</div>
+	{% endfor %}
+</div>
+
+{% endblock %}
+
+{% block footer %} {{ super() }} {% endblock %}

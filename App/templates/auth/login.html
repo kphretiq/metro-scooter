@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block title %}
+{{ super() }}
+login / signup
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block navbar %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<h1>login / signup / reset</h1>
+<h2>log in</h2>
+<form
+	id="login-form"
+ 	action="/login"
+	data-toggle="validator"
+	role="form"
+	method="POST">
+
+	<div class="form-group">
+		<label for="input-login-username" class="control-label">Username</label>
+		<input
+			type="text"
+   			class="form-control"
+			id="input-login-username"
+			name="username"
+			placeholder="joeuser"
+   			{% if username is defined %}
+   			value="{{ username }}"
+	  		{% endif %}
+			data-error="invalid username"
+			required></input>
+		<div class="help-block with-errors">
+		{% if error is defined %}{{ error }}{% endif %}
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="input-password" class="control-label">Password: </label>
+		<div class="form-group">
+			<input
+				type="password"
+				class="form-control"	
+				id="input-password"
+				name="password"
+				placeholder="a nice long passphrase"
+				required></input>
+		</div>
+		<div class="help-block with-errors"></div>
+	</div>
+
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary">submit</button>
+	</div>
+</form>
+
+<h2>sign up</h2>
+<h3>we'll send you an email with a sign-up link!</h3>
+<h4>sign up link is good for 1 day!</h4>
+<form
+	id="signup-form"
+	action="/auth/signup"
+	data-toggle="validator"
+	role="form"
+	method="POST">
+	<div class="form-group">
+		<label for="input-signup-email" class="control-label">Email</label>
+		<input
+			type="email"
+			id="input-signup-email"
+			class="form-control"
+			name="email"
+			placeholder="user@example.com"
+			data-error="invalid email"
+			required></input>
+		<div class="help-block with-errors"></div>
+	</div>
+
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary">submit</button>
+	</div>
+</form>
+
+<h2>reset password</h2>
+<h3>enter your email address for your account below</h3>
+<form
+	id="signup-form"
+	action="/auth/password-reset"
+	data-toggle="validator"
+	role="form"
+	method="POST">
+	<div class="form-group">
+		<label for="input-reset-email" class="control-label">Email</label>
+		<input
+			type="email"
+			id="input-reset-email"
+			class="form-control"
+			name="email"
+			placeholder="changepassword@example.com"
+			data-error="invalid email"
+			required></input>
+		<div class="help-block with-errors"></div>
+	</div>
+
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary">submit</button>
+	</div>
+</form>
+
+{% endblock %}

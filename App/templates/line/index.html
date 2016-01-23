@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %} {{ super() }} {% endblock %}
+{% block head %} {{ super() }} {% endblock %}
+{% block navbar %} {{ super() }} {% endblock %}
+{% block content %}
+<div class="container">
+	<h1>{{ line.name }}</h1>
+	<div class="lead">
+	{% filter markdown %}{{ line.blurb }}{% endfilter %}
+	</div>
+	{% if line %}{% for image in line.images %}
+	<div class="col-md-4">
+		<img
+	  		class="img-responsive center-block"
+	 		alt="{{ image.alt }}"
+			src="{{ image.uri }}">
+	</div>
+	{% endfor %}{% endif %}
+
+	{% for brand in line.brands %}
+	<div class="col-md-4">
+		<a href="/brand/{{ brand.name }}">
+		{% if brand.images and brand.images[0] %}
+		<img
+	  		class="img-responsive center-block"
+			alt="{{ brand.images[0].alt }}"
+			src="{{ brand.images[0].uri }}">
+		{% endif %}
+		</a>
+	</div>
+	{% endfor %}
+</div>
+
+{% endblock %}
+
+{% block footer %} {{ super() }} {% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %} {{ super() }} {% endblock %}
+{% block head %} {{ super() }} {% endblock %}
+{% block navbar %} {% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="col-md-1"></div>
+	<a href="/"><div class="col-md-2 m-btn text-center">home</div></a>
+	<a href="/line/Scooters"><div class="col-md-2 m-btn text-center">scooters</div></a>
+	<a href="/line/Gear"><div class="col-md-2 m-btn text-center">gear</div></a>
+	<a href="/metro/deals"><div class="col-md-2 m-btn text-center">deals</div></a>
+	<a href="/metro/contact"><div class="col-md-2 m-btn text-center">contact</div></a>
+	<div class="col-md-1"></div>
+</div>
+
+<div class="container">
+	<div class="center-block">
+		<img class="img-responsive center-block" src="{{ url_for('static', filename="images/home/metro_blue.png") }}" alt="Blue Scooter">
+	</div>
+</div>
+
+<div class="container">
+	<div class="col-md-1"></div>
+	<a href="/metro/hours"><div class="col-md-2 m-btn text-center">hours</div></a>
+	<a href="/metro/financing"><div class="col-md-2 m-btn text-center">financing</div></a>
+	<a href="/metro/comments"><div class="col-md-2 m-btn text-center">comments</div></a>
+	<a href="/metro/pricing"><div class="col-md-2 m-btn text-center">pricing</div></a>
+	<a href="/metro/faq"><div class="col-md-2 m-btn text-center">f.a.q.</div></a>
+	<div class="col-md-1"></div>
+</div>
+
+<div class="container">
+	<div class="center-block">
+		<p class="lead"><b>Metro Scooter - Vespa Cincinnati</b> is Cincinnati's scooter shop!
+		We carry a full line of quality scooters from the nation's leading
+		brands:
+		<b>Vespa</b>, <b>Genuine Scooters</b> (<b>Buddy</b>, <b>Stella</b>),
+		and <b>Kymco</b>.
+		All of our scooters come with solid warranties backed by the
+		<em>Piaggio Certified Technicians</em> at our full service repair shop.
+		We are located at 3716 Montgomery Rd, just north of the corner of Dana
+		Avenue and Montgomery Road, near Xavier University.
+		Getting here is easy via I-71, Norwood Lateral 562, and I-75. We are
+		within a few minutes of Xavier University, Hyde Park, North Avondale,
+		and the areas surrounding these communities. We are immediately off
+		I-71 at the Dana Avenue exit; less than 10 minutes from Downtown and
+		Kenwood Road.</p>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{{ super() }}
+{% endblock %}
+

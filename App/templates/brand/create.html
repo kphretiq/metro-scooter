@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}
+{{ super() }}
+Create Brand
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<div class="container">
+	<h1>Brand</h1>
+	{% if error is defined %}
+	<p>{{ error }}</p>	
+	{% endif %}
+
+	<form
+		id="brand-form"
+		method="POST"
+		role="form"
+		data-toggle="validator">
+
+		<div class="form-group">
+			<label for="select-line-id" class="control-label">Line</label>
+			<select id="select-line-id" name="line_id" class="form-control">
+				{% for line in lines %}
+				<option value={{ line.id }}>{{ line.name }}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="input-username" class="control-label">Name</label>
+			<input
+				type="text"
+				class="form-control"
+				id="input-name"
+				name="name"
+				{% if brand is defined %}value="{{ brand.name }}"{% endif %}
+				placeholder="Sundries"
+				required></input>
+		</div>
+
+		<div class="form-group">
+			<label for="textarea-blurb" class="control-label">Blurb</label>
+			<textarea
+				class="form-control"
+				id="textarea-blurb"
+				name="blurb"
+				placeholder="Add some markdown describing this product line."
+				required>{% if brand is defined %}{{ brand.blurb }}{% endif %}</textarea>
+		</div>
+
+		<div class="form-group">
+			<label for="checkbox-disabled" class="control-label">
+				<input
+					type="checkbox"
+					id="checkbox-disabled"
+					name="disabled"
+					{% if brand is defined and brand.disabled == 1 %}checked{% endif %}></input>
+				Disable
+			</label>
+		</div>
+
+		{% if brand is defined and brand.image %}
+		<img src="{{ brand.image.uri }}" alt="{{ brand.image.alt }}">
+		{% endif %}
+
+		<div class="form-group">
+			<label for="submit-create" class="control-label"></label>
+			<button
+				type="submit"
+				class="btn btn-primary"
+				id="submit-create">Submit</button>
+		</div>
+	</form>
+	{% if brand is defined and brand.name %}
+	<a href="/brand/images/{{ brand.id }}">Manage Images for {{ brand.name }}</a>
+	{% endif %}
+</div>
+
+{% endblock %}

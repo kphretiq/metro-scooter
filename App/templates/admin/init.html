@@ -1,0 +1,74 @@
+{% extends "admin/base-auth.html" %}
+{% block title %}
+{{ super() }}
+initialize
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+<!-- root-only js -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/root.js') }}"></script>
+{% endblock %}
+
+{% block navbar %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ task }}</h1>
+<p>{{ message }}</p>	
+<form
+	id="init-root-form"
+	data-toggle="validator"
+	role="form"
+	method="POST">
+
+	<div class="form-group">
+		<label for="input-username" class="control-label">Username</label>
+		<input
+			type="text"
+			class="form-control"
+			id="input-username"
+			name="username"
+			data-error="Invalid root user name!"
+			data-minlength="6"
+			data-maxlength="80"
+			placeholder="admin"
+			required></input>
+		<div class="help-block with-errors"></div>
+	</div>
+
+	<div class="form-group">
+		<label for="input-password" class="control-label">Password</label>
+		<div class="form-group">
+			<input
+				type="password"
+				class="form-control"
+				id="input-password"
+				name="password"
+				data-minlength="8"
+				placeholder="password/passphrase"
+				required></input>
+			<input
+				type="password"
+				class="form-control"
+				id=input-password-confirm"
+				name="password-confirm"
+				data-match="#input-password"
+				data-match-error="passwords must match"
+				placeholder="confirm"
+				required></input>
+			<div class="help-block with-errors"></div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<button type="submit" class="btn btn-primary">submit</input>
+	</div>
+</form>
+{% endblock %}
+
+{% block footer %}
+{{ super() }}
+{% endblock %}
+

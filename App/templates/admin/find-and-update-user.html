@@ -1,0 +1,61 @@
+{% extends "admin/base-auth.html" %}
+{% block title %}
+{{ super() }}
+Create New User
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+<!-- root-only js -->
+{% endblock %}
+
+{% block adminsearch %}
+
+<form
+	id="find-and-update-user-form"
+ 	class="navbar-form navbar-right"
+	method="POST"
+ 	role="search"
+  	action=/admin/find-and-update-user>
+
+	<div class="form-group">
+		<input
+			type="text"
+   			class="form-control"
+			id="input-searchkey"
+			name="search_key"
+   			placeholder="goat kamal"
+			required></input>
+	</div>
+
+	<div class="form-group">
+		<label for="submit-search" class="control-label"></label>
+		<button
+			type="submit"
+   			class="btn btn-primary"
+			id="submit-search">Find User</button>
+	</div>
+</form>
+
+{% endblock %}
+
+{% block content %}
+<h1>Find and Update User</h1>
+{% if error is defined %}
+<p>{{ error }}</p>	
+{% endif %}
+
+{% if results is defined %}
+<ul>
+{% for result in results %}
+	<li>
+		<a href="/admin/update-user/{{ result.username }}">
+			{{ result.username }}</a>
+		{{ result.first_name }} {{ result.last_name }} {{ result.email }}
+		<a href="/admin/delete-user/{{ result.user_id }}">delete </a>
+	</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}

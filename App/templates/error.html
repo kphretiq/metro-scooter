@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}
+{{ super() }}
+error
+{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block navbar %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<h1>Error</h1>
+<div>{{ error }}</div>
+{% endblock %}
+{% block footer %}
+{{ super() }}
+{% endblock %}
+

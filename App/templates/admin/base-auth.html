@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+<!-- password strength checker for bootstrap -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/lib/jquery.pwstrength.bootstrap/pwstrength-bootstrap-1.2.9.min.js') }}"></script>
+<!-- init pwstrength -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/auth-password.js') }}"></script>
+{% endblock %}

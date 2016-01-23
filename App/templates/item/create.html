@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}
+{{ super() }}
+Create Item
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<h1>Item</h1>
+{% if error is defined %}
+<p>{{ error }}</p>	
+{% endif %}
+
+<form
+	id="item-form"
+	method="POST"
+ 	role="form"
+	data-toggle="validator">
+
+	<div class="form-group">
+		<label for="select-brand-id" class="control-label">Brand</label>
+		<select id="select-brand-id" name="brand_id" class="form-control">
+			{% for brand in brands %}
+			<option value={{ brand.id }}>{{ brand.name }}</option>
+			{% endfor %}
+		</select>
+	</div>
+
+	<div class="form-group">
+		<label for="input-username" class="control-label">Name</label>
+		<input
+			type="text"
+   			class="form-control"
+			id="input-name"
+			name="name"
+			{% if item is defined %}value="{{ item.name }}"{% endif %}
+   			placeholder="Sundries"
+			required></input>
+	</div>
+
+	<div class="form-group">
+		<label for="textarea-blurb" class="control-label">Blurb</label>
+		<textarea
+   			class="form-control"
+			id="textarea-blurb"
+			name="blurb"
+   			placeholder="Add some markdown describing this item."
+			required>{% if item is defined %}{{ item.blurb }}{% endif %}</textarea>
+	</div>
+
+	<div class="form-group">
+		<label for="checkbox-disabled" class="control-label">
+			<input
+				type="checkbox"
+				id="checkbox-disabled"
+				name="disabled"
+				{% if item is defined and item.disabled == 1 %}checked{% endif %}></input>
+			Disable
+		</label>
+	</div>
+
+	{% if item is defined and item.image %}
+	<img src="{{ item.image.uri }}" alt="{{ item.image.alt }}">
+	{% endif %}
+
+	<div class="form-group">
+		<label for="submit-create" class="control-label"></label>
+		<button
+			type="submit"
+   			class="btn btn-primary"
+			id="submit-create">Submit</button>
+	</div>
+</form>
+{% if item is defined %}
+<a href="/brand/images/{{ item.id }}">Manage Images for {{ item.name }}</a>
+{% endif %}
+{% endblock %}

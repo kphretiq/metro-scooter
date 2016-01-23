@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ super() }}
+check your inbox
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block navbar %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<h1>Check your Inbox</h1>
+<p>We sent an email to {{ email }} with a helpful link.</p>
+{% endblock %}

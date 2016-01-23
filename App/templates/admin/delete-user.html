@@ -1,0 +1,47 @@
+{% extends "admin/base-auth.html" %}
+{% block title %}
+{{ super() }}
+Create New User
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<h1>Delete User</h1>
+{% if message is defined %} <p>{{ message }}</p>{% endif %}
+
+<form
+	id="signup-form"
+	method="POST"
+  	action=/admin/delete-user/{{ user_id }}>
+	<h2>Deleting {{ profile.user.username }} ({{ profile.user.role }})</h2>
+	<dl>
+		<dt>Name</dt>
+		<dd>{{ profile.first_name }} {{ profile.middle }} {{ profile.last_name }}</dd>
+		<dt>Email</dt>
+		<dd>{{ profile.email }}</dd>
+
+		<dt>Address</dt>
+		<dd>
+			<ul>
+				<li>{{ profile.street }}</li>
+				{% if profile.street2 %}
+				<li>{{ profile.street2 }}</li>
+				{% endif %}
+				<li>{{ profile.city }} {{ profile.subdivision }} {{ profile.country }} {{ profile.postal_code }}</li>
+			</ul>
+		</dd>
+	</dl>
+
+	<div class="form-group">
+		<label for="submit-create" class="control-label"></label>
+		<button
+			type="submit"
+   			class="btn btn-primary"
+			id="submit-create">Delete User</button>
+	</div>
+	<a href="/admin/find-and-update-user">Back to Search</a>
+</form>
+
+{% endblock %}

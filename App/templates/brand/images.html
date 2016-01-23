@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}
+{{ super() }}
+Manage Brand Images
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='js/images.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<h1>Manage Brand Images</h1>
+	{% if error is defined %}
+	<p>{{ error }}</p>	
+	{% endif %}
+
+<h2>Add A New Image</h2>
+
+	<form
+		id="brand-add-image-form"
+		method="POST"
+		role="form"
+		data-toggle="validator">
+
+		<div class="form-group">
+			<label for="input-file-new" class="control-label">Select a File</label>
+			<input
+				type="file"
+				class="form-control"
+				id="input-file-new"
+				name="filename"
+				placeholder="select an image file"
+				required></input>
+		</div>
+		<input
+			type="hidden"
+			id="image-url"
+			name="image_url"
+			value="{{ url_for('static', filename='images/placeholder-640x480.png') }}">
+
+		<div class="form-group">
+			<label for="input-upload-folder" class="control-label">Upload Folder</label>
+			<input
+				type="text"
+				class="form-control"
+				id="input-upload-folder"
+				name="upload_folder"
+				placeholder="C:\Uploads"
+				required></input>
+		</div>
+
+		<div class="form-group">
+			<label for="input-alt" class="control-label">Alt Text</label>
+			<input
+				type="text"
+				class="form-control"
+				id="input-alt"
+				name="alt"
+				placeholder="brand logo"
+				required></input>
+		</div>
+
+		<div class="form-group">
+			<label for="submit-create" class="control-label"></label>
+			<button
+				type="submit"
+				class="btn btn-primary"
+				id="submit-create" value="add">Submit</button>
+		</div>
+
+	</form>
+
+	{% if brand is defined %}{% for image in brand.images %}
+	<div class="col-md-2">
+		<img class="img-responsive" src="{{ image.uri }}" alt="{{ image.alt }}">
+		<a href="/brand/images/delete/{{ brand.id }}/{{ image.id }}">Delete</a>
+	</div>
+	{% endfor %}{% endif %}
+
+</div>
+{% endblock %}

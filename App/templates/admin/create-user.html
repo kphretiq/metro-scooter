@@ -1,0 +1,79 @@
+{% extends "admin/base-auth.html" %}
+{% block title %}
+{{ super() }}
+Create New User
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+<!-- root-only js -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/root.js') }}"></script>
+{% endblock %}
+{% block content %}
+<h1>Create User</h1>
+{% if error is defined %}
+<p>{{ error }}</p>	
+{% endif %}
+
+<form
+	id="signup-form"
+	method="POST"
+ 	role="form"
+	{% if temp_auth is defined and temp_auth.key %}
+  	action=/auth/complete-signup/{{ temp_auth.key }}
+	{% endif %}
+	data-toggle="validator">
+
+	{% if temp_auth is defined and temp_auth.email %}
+	<input type="hidden" name="email" value="{{ temp_auth.email }}">
+	{% endif %}
+
+	<div class="form-group">
+		<label for="input-username" class="control-label">Username</label>
+		<input
+			type="text"
+   			class="form-control"
+			id="input-username"
+			name="username"
+			value="{% if username is defined %}{{ username }}{% endif %}"
+   			placeholder="joe user"
+			required></input>
+	</div>
+
+	<div class="form-group">
+		<label for="input-password" class="control-label">Password</label>
+		<div class="form-group">
+			<input
+				type="password"
+				class="form-control"
+				id="input-password"
+				name="password"
+				placeholder="a nice, long passphrase"
+				data-minlength="8"
+				required></input>
+				<span class="help-block">Minimum 8 characters</span>
+		</div>
+		<div class="form-group">
+			<input
+				type="password"
+				class="form-control"
+				id="input-password-again"
+				name="password-again"
+				data-match="#input-password"
+				data-match-error="passwords do not match"
+				placeholder="repeat the nice, long passphrase"
+				required></input>
+			<div class="help-block with-errors"><div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="submit-create" class="control-label"></label>
+		<button
+			type="submit"
+   			class="btn btn-primary"
+			id="submit-create">Create User</button>
+	</div>
+</form>
+
+{% endblock %}
